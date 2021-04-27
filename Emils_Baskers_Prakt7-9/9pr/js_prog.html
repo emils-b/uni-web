@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="lv" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<title>JS Prog</title>
+</head>
+<body>
+	<div>
+		<div class="form-group col-2 p-3">
+			<label for="num">Ievadiet skaitli!</label>
+			<input type="number" class="form-control" id="num" name="num" required>
+			<button type="submit" class="btn btn-primary" name="calculate" onclick="calculate()">Rēķināt</button>
+		</div>
+	</div>
+	<hr>
+	<div>
+		<form id="forma">
+			<div class="form-group col-2 p-3">
+				<label for="name">Vārds</label>
+				<input type="text" id="name" value="test">
+			</div>
+			<div class="form-group col-2 p-3">
+				<label for="surname">Uzvārds</label>
+				<input type="text" id="surname" value="test surname">
+			</div>
+			<div class="form-group col-2 p-3">
+				<label for="username">Lietotājvārds </label>
+				<input type="text" id="username" value="test username">
+			</div>
+			<div class="form-group col-2 p-3">
+				<label for="email">E-pasts</label>
+				<input type="text" id="email" value="test email">
+			</div>
+			<div class="form-group col-2 p-3">
+				<label for="age">Vecums</label>
+				<input type="number" id="age" value="20">
+			</div>
+			<button type="submit" class="btn btn-primary" name="submit">iesniegt</button>
+		</form>
+		<script>
+			let forma = document.getElementById('forma');
+
+			function validateForm(event) {
+				event.preventDefault();
+
+				const name = document.getElementById('name').value;
+				const surname = document.getElementById('surname').value;
+				const username = document.getElementById('username').value;
+				const email = document.getElementById('email').value;
+				const age = document.getElementById('age').value;
+
+				if (name == "" || surname == "" || username == "" || email == "" || age == ""){
+					alert("Lūdzu aizpildiet visus laukus");
+				}
+
+				if (username.length < 5 ){
+					alert("Lietotājvārdam jābūt vismaz 5 simbolus garam");
+				}
+
+				if (!email.includes('@')){
+					alert("Ievadiet derīgu epastu");
+				}
+
+				if (age < 18 || age > 110){
+					alert("Jums jābūt vismaz 18 gadus vecam.... vai jaunākam par 110...");
+				}
+
+				forma.submit();
+			}
+
+			forma.addEventListener("submit",validateForm,false);
+		</script>
+	</div>
+
+</body>
+
+<script type="text/javascript">
+	//1.1 uzdevums
+	document.writeln('<hr>');
+	for (i = 0; i < 100; i++) {
+		if (i%5 == 0 && i%3 == 0) {
+			document.writeln('HipHop ');
+		}
+		if (i%3 == 0) {
+			document.writeln('Hip ');
+		}
+		if (i%5 == 0) {
+			document.writeln('Hop ');
+		}
+		document.writeln(i + " ");
+	}
+	//1.2 uzdevums
+	function calculate() {
+		const val = document.getElementById('num').value;
+		if (val%5 == 0 && val%3 == 0) {
+			alert('HipHop ');
+			return;
+		}
+		if (val%3 == 0) {
+			alert('Hip ');
+			return;
+		}
+		if (val%5 == 0) {
+			alert('Hop ');
+			return;
+		}
+		alert('ne Hip ne Hop');
+	}
+</script>
+</html>
